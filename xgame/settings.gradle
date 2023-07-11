@@ -1,0 +1,13 @@
+pluginManagement {
+	repositories {
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'https://repo.spring.io/snapshot' }
+		gradlePluginPortal()
+	}
+}
+rootProject.name = 'xgame'
+include 'common'
+include 'common:net'
+findProject(':common:net')?.name = 'net'
+include 'admin'
+

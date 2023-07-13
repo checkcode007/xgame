@@ -1,9 +1,13 @@
 plugins {
     id 'java'
+//    id 'org.springframework.boot' version '3.1.1'
 }
-
+apply plugin: 'io.spring.dependency-management'
 group = 'com.xirui'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+//apply plugin:'java'
+//apply plugin: 'war'
 
 repositories {
     mavenCentral()
@@ -12,6 +16,15 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    //web jar
+//    implementation 'org.springframework:spring-context:6.0.10'
+//    implementation 'org.springframework:spring-web:6.0.10'
+//    implementation 'org.springframework:spring-webmvc:6.0.10'
+//    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+//    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+    implementation 'org.springframework.boot:spring-boot-starter-parent:3.1.1'
+
+
 }
 
 test {

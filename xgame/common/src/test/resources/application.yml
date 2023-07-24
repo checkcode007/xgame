@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: springboot-redisson
+  redis:
+    cluster:
+      nodes: dev-redisdb.nku4ud.clustercfg.memorydb.ap-southeast-1.amazonaws.com:6379
+    password:
+    lettuce:
+      pool:
+        max-active: 1500
+        max-wait: 5000
+        max-idle: 500
+        min-idle: 100
+    timeout: 60000

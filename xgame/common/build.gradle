@@ -29,6 +29,9 @@ dependencies {
     implementation('org.slf4j:slf4j-simple:1.7.32') {
         exclude group: 'log4j', module: 'log4j'
     }
+
+    implementation 'org.redisson:redisson-spring-boot-starter:3.23.0'
+
 }
 
 test {

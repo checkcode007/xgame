@@ -1,0 +1,13 @@
+redis:
+  cluster:
+#    nodes: "192.168.52.1:7000,192.168.52.1:7001,192.168.52.1:7002,192.168.52.1:7003,192.168.52.1:7004,192.168.52.1:7005"
+     nodes: "dev-redisdb.nku4ud.clustercfg.memorydb.ap-southeast-1.amazonaws.com:6379"
+  password:
+  lettuce:
+    pool:
+      max-active: 1500
+      max-wait: 5000
+      max-idle: 500
+      min-idle: 100
+      shutdown-timeout: 1000
+  timeout: 60000

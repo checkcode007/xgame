@@ -11,4 +11,5 @@ include 'common:net'
 findProject(':common:net')?.name = 'net'
 include 'admin'
 include 'net'
+include 'client'
 

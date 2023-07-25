@@ -13,7 +13,7 @@ public class ServerHandler extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new ProtobufEncoder());
 //        pipeline.addLast(new ProtobufDecoder(MsgProtos.Msg.getDefaultInstance()));
-//        pipeline.addLast(new ProtobufDecoder(MsgProtos.TestMsg.getDefaultInstance()));
+//        pipeline.addLast(new ProtobufDecoder(MsgPromos.TestMsg.getDefaultInstance()));
         pipeline.addLast(new ProtobufDecoder(BaseProtos.BaseMsg.getDefaultInstance()));
         pipeline.addLast(new PbSimpleHander1());
         pipeline.addLast(new PbSimpleHander2());

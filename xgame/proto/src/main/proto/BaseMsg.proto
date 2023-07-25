@@ -1,0 +1,30 @@
+// [头部声明部分，包含了协议的版本、包名、特定语言的选项设置等]
+
+// 对于一个“.proto”文件而言，文件首个非空、非注释的行必须注明Protobuf的语法版本，否则默认版本是proto2
+syntax = "proto3";
+
+// 定义Protobuf的包名称空间，通过指定包名来避免message名字冲突
+package com.xirui.protocol;
+
+// 指定生成的Java类的包名。若不指定该选项，则会以头部声明中的package作为Java类的包名。
+option java_package = "com.xirui.protocol";
+// 指定生成Java类的打包方式。不指定则默认false，表示所有的消息都作为内部类，打包到一个外部类中。true表示一个消息对应一个Java的POJO类
+option java_multiple_files = false;
+// 指定生成的外部类名
+option java_outer_classname = "BaseProtos";
+
+// [消息结构体部分，可以定义一个或者多个消息结构体]
+
+// 消息定义
+message BaseMsg {
+    // 字段格式为：限定修饰符 数据类型 字段名称(建议以_分隔) = 分配标识号(同一消息结构体中不能重复，无须连续，开始使用就不能再改变)
+    uint32 type = 1;
+    Msg1  msg = 2;
+};
+message Msg1 {
+    // 字段格式为：限定修饰符 数据类型 字段名称(建议以_分隔) = 分配标识号(同一消息结构体中不能重复，无须连续，开始使用就不能再改变)
+    uint32 id = 1;
+    string content = 2;
+    bool b=3;
+    string des = 4;
+};

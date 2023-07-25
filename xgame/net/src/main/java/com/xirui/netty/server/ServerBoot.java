@@ -1,6 +1,6 @@
-package com.xirui.server;
+package com.xirui.netty.server;
 
-import com.xirui.config.MyNettyProperties;
+import com.xirui.netty.config.MyNettyProperties;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.nio.NioEventLoopGroup;
 import jakarta.annotation.PostConstruct;

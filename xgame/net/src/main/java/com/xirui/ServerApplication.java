@@ -1,6 +1,6 @@
 package com.xirui;
 
-import com.xirui.annotation.EnableNettyServer;
+import com.xirui.netty.annotation.EnableNettyServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

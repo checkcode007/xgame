@@ -1,7 +1,7 @@
-package com.xirui.client;
+package com.xirui.netty.client;
 
-import com.xirui.bean.MessageBean;
-import com.xirui.config.MyNettyProperties;
+import com.xirui.netty.bean.MessageBean;
+import com.xirui.netty.config.MyNettyProperties;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;

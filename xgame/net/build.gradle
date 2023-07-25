@@ -25,6 +25,10 @@ dependencies {
 
     implementation 'cn.hutool:hutool-all:5.8.20'
 
+//    implementation 'com.google.protobuf:protobuf-java:3.24.0-RC2'
+
+    implementation project(":proto")
+
 }
 
 test {

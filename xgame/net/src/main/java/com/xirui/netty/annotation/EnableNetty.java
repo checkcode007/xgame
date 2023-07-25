@@ -1,4 +1,4 @@
-package com.xirui.annotation;
+package com.xirui.netty.annotation;
 
 import java.lang.annotation.*;
 

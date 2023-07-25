@@ -1,18 +1,12 @@
-package com.xirui.client.handler;
+package com.xirui.netty.client.handler;
 
-import cn.hutool.core.exceptions.ExceptionUtil;
-import cn.hutool.json.JSONUtil;
-import com.xirui.bean.MessageBean;
+import com.xirui.netty.bean.MessageBean;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @ChannelHandler.Sharable
 public class ClientListenerHandler extends SimpleChannelInboundHandler<MessageBean> {

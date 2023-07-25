@@ -2,9 +2,12 @@ package com.xirui.client;
 
 import com.xirui.bean.MessageBean;
 import com.xirui.config.MyNettyProperties;
+import com.xirui.protocol.BaseProtos;
+import com.xirui.protocol.MsgProtos;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +17,17 @@ public class ClientBoot {
     Bootstrap bootstrap;
     @Autowired
     MyNettyProperties myNettyProperties;
+
+
+
+    @PostConstruct
+    public void start() throws InterruptedException {
+//        sendMsg(new MessageBean("123"));
+//        connect().writeAndFlush(MsgProtos.Msg.newBuilder().setId(222).setContent("test222").build());
+//        connect().writeAndFlush(MsgProtos.TestMsg.newBuilder().setId(333).setB(false).setDes("des3233").setContent("test333").build());
+        connect().writeAndFlush(BaseProtos.BaseMsg.newBuilder().setType(1999).setMsg(BaseProtos.Msg1.newBuilder().setId(123).setB(false).setDes("des123").setContent("test1233").build()).build());
+
+    }
 
     /**
      * 主端口连接

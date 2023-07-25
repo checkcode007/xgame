@@ -1,7 +1,7 @@
-package com.xirui.client.handler;
+package com.xirui.netty.client.handler;
 
-import com.xirui.common.handler.MessageDecodeHandler;
-import com.xirui.common.handler.MessageEncodeHandler;
+import com.xirui.netty.handler.MessageDecodeHandler;
+import com.xirui.netty.handler.MessageEncodeHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

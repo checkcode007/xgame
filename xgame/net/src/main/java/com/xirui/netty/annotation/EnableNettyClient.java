@@ -1,6 +1,6 @@
-package com.xirui.annotation;
+package com.xirui.netty.annotation;
 
-import com.xirui.client.ClientBoot;
+import com.xirui.netty.client.ClientBoot;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

@@ -1,7 +1,7 @@
-package com.xirui.config;
+package com.xirui.netty.config;
 
-import com.xirui.client.handler.ClientHandler;
-import com.xirui.server.handler.ServerHandler;
+import com.xirui.netty.client.handler.ClientHandler;
+import com.xirui.netty.server.handler.ServerHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;

@@ -1,4 +1,4 @@
-package com.xirui.bean;
+package com.xirui.netty.bean;
 
 
 import cn.hutool.json.JSONUtil;

@@ -13,4 +13,5 @@ include 'admin'
 include 'net'
 include 'client'
 include 'proto'
+include 'db'
 

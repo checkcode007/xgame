@@ -3,3 +3,9 @@ spring:
     mongodb:
       #        mongodb://mongouser:7pfLynSie5L7B!UU$#Elu@dev-docdb.cl65l50la7qe.ap-southeast-1.docdb.amazonaws.com:27017/pocket_code?retryWrites=false
       uri: mongodb://mongouser:7pfLynSie5L7B!UU$#Elu@dev-docdb.cl65l50la7qe.ap-southeast-1.docdb.amazonaws.com:27017/pocket_test?retryWrites=false
+
+      
+  redis:
+    host: localhost
+    port: 6379
+

@@ -1,13 +1,22 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.github.johnrengelman:shadow:8.1.1'
+    }
 }
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0-SNAPSHOT'
+}
+
 
 group = 'com.xirui'
 version = '0.0.1-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
@@ -19,31 +28,48 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web:3.1.1'
     implementation 'io.netty:netty-all:4.1.94.Final'
-
-
+    shadow 'junit:junit:3.8.2'
 }
 
 test {
     useJUnitPlatform()
 }
+task copyDependencies(type: Copy) {
+    from configurations.runtimeClasspath
+    into 'build/libs/lib'
+}
+jar.dependsOn(copyDependencies)
 
-//// 构建配置
-//build {
-//    // 输出目录
-//    outputDir = file('build')
-//
-//    // JAR构建配置
-//    jar {
-//        // 指定主清单属性
-//        manifest {
-//            attributes 'Main-Class': 'com.xirui.GameApplication'
-//        }
-//    }
-//}
-// 构建配置
-tasks.named('jar', Jar) {
-    // 指定主清单属性
-    manifest {
-        attributes 'Main-Class': 'com.xirui.GameApplication'
+jar {
+    manifest {  //incubating版本，以后版本可能会改API
+        attributes(
+                "Implementation-Title": project.name,
+                "Implementation-Version": '1.2',
+                "Main-Class": "com.xirui.GameApplication",
+//                "Implementation-Title": "Gradle",
+                'Class-Path': '/libs/a.jar'
+        )
     }
+    if (!configurations.runtimeClasspath.isEmpty()) {
+        manifest.attributes('Class-Path': '. lib/' + configurations.runtimeClasspath.collect { it.name }.join(' lib/'))
+    }
+}
+
+shadowJar {
+    mergeServiceFiles() // 合并服务描述文件
+    manifest {
+        //指定入口函数，其他的是默认
+        attributes(
+                'Main-Class': 'com.xirui.GameApplication',
+//                'Class-Path': 'libs/lib/*.jar'
+                'External-Libs-Path': 'lib' // 设置自定义属性，标识外部 JAR 文件所在的文件夹
+        )
+
+    }
+    archiveBaseName.set('game-full')
+    archiveClassifier.set('tt')
+    archiveVersion.set('1.2')
+
+  // 在打包之前先执行复制任务
+    dependsOn(copyDependencies)
 }

@@ -68,6 +68,15 @@ public class CacheAdvice {
         if(obj == null){
             return FastJsonUtil.parseJSONStr2JSONObject("{\"message\":\"illegal id\",\"code\":403}");
         }
+
+//        // 修改入参
+//        JSONObject object = new JSONObject();
+//        object.put("id", 8);
+//        object.put("name", "lisi");
+//        objects[0] = object;
+//
+//        // 将修改后的参数传入
+//        return joinPoint.proceed(objects);
         System.err.println("请求的advice触发了----->around----->end---obj:"+obj);
         return obj;
     }

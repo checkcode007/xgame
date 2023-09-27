@@ -16,5 +16,5 @@ include 'client'
 include 'proto'
 include 'db'
 include 'game_full'
-
+include 'xtest'
 

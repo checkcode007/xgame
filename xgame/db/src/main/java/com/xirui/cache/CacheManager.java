@@ -1,4 +1,14 @@
 package com.xirui.cache;
 
-public class CacheManager {
+import java.util.Map;
+
+
+public class CacheManager<T,E> {
+
+//    private
+
+    public T getOne(E id){
+        return null;
+    }
+
 }

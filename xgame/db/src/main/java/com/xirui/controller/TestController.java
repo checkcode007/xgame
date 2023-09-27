@@ -2,6 +2,7 @@ package com.xirui.controller;
 
 import com.xirui.mongo.TestMgo;
 import com.xirui.mongo.bean.TestBean;
+import com.xirui.mysql.CacheTestService;
 import com.xirui.mysql.StudentService;
 import com.xirui.mysql.entity.Student;
 import io.swagger.annotations.Api;
@@ -26,12 +27,23 @@ public class TestController {
     @Autowired
     RedisTemplate<String, String> redisTemplate;
 
-    @RequestMapping("/hello")
-    public String hello() {
-        TestBean testBean = new TestBean("1","zhang1");
-
-        testMgo.save(1l,testBean);
+    @Autowired
+    CacheTestService cacheTestS;
+    @RequestMapping("/cache")
+    public String cache() {
+        cacheTestS.test1("t1","t2");
         return "Hello Spring Boot!";
+    }
+    @RequestMapping("/cache1")
+    public String cache1() {
+        return "Hello Spring Boot!";
+    }
+    @RequestMapping("/hello")
+        public String hello() {
+            TestBean testBean = new TestBean("1","zhang1");
+
+            testMgo.save(1l,testBean);
+            return "Hello Spring Boot!";
     }
     @RequestMapping("/all")
     public String all() {
@@ -49,4 +61,5 @@ public class TestController {
 
         return v;
     }
+
 }

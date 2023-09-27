@@ -16,7 +16,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import springfox.documentation.spring.web.json.Json;
 
 /**
  * 缓存处理
@@ -35,11 +34,12 @@ public class CacheAdvice {
     @Pointcut("@annotation(com.xirui.cache.annotation.XCacheEvict)")
     private void evict() {}
 
-//    /**
-//     * 定义一个切面，拦截 com.mutest.controller 包和子包下的所有方法
-//     */
-//    @Pointcut("execution(* com.mutest.controller..*.*(..))")
-//    public void pointCut() {}
+    /**
+     * 定义一个切面，拦截 com.mutest.controller 包和子包下的所有方法
+     * com.xirui.controller
+     */
+    @Pointcut("execution(* com.xirui.controller..*.*(..))")
+    public void pointCut() {}
     // Before表示logAdvice将在目标方法执行前执行
     @Before("able()")
     public void beforeAble(){

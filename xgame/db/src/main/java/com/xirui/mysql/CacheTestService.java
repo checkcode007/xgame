@@ -15,7 +15,7 @@ public class CacheTestService {
 
     @XCacheAble(name = "test1", key="k:#p1.pt2")
     public String test1(PPTest p1,String p2,Integer p3,Long p4,Float p5,Object p6) {
-        return p1+"===="+p2;
+        return "==result=";
     }
 
     public static class PPTest{

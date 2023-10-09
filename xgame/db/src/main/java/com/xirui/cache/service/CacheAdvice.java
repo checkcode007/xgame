@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.lang.reflect.Method;
+
 /**
  * 缓存处理
  * @author zcj
@@ -26,7 +28,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Order(0)
 public class CacheAdvice {
     private final Logger log = LoggerFactory.getLogger(CacheAdvice.class);
-
 
     // 定义一个切点：所有被GetMapping注解修饰的方法会织入advice
     @Pointcut("@annotation(com.xirui.cache.annotation.XCacheAble)")
@@ -44,24 +45,24 @@ public class CacheAdvice {
     @Before("able()")
     public void beforeAble(){
         // 这里只是一个示例，你可以写任何处理逻辑
-        System.err.println("请求的advice触发了----->before");
+        log.info("请求的advice触发了----->before");
     }
     @After("able()")
     public void afterAble(){
-        System.err.println("请求的advice触发了----->after");
+        log.info("请求的advice触发了----->after");
     }
 
     @Around("able()")
     public Object aroundAble(ProceedingJoinPoint joinPoint) throws Throwable{
-        System.err.println("请求的advice触发了----->around---->start");
+        log.info("请求的advice触发了----->around---->start");
         Object[] args = joinPoint.getArgs();
-        System.err.println("请求的advice触发了----->around---->args:"+args);
-        if(args!=null){
-            for (Object arg : args) {
-//                JSObject jsObject = (JSObject) arg;
-                System.err.println("请求的advice触发了----->around-->:"+arg);
-            }
-        }
+        log.info("请求的advice触发了----->around---->args:"+args);
+//        if(args!=null){
+//            for (Object arg : args) {
+////                JSObject jsObject = (JSObject) arg;
+//                log.info("请求的advice触发了----->around-->:"+arg);
+//            }
+//        }
 //        Long id = ((JSONObject) args[0]).getLong("id");
 //        String name = ((JSONObject) args[0]).getString("name");
         Object obj = joinPoint.proceed();
@@ -77,7 +78,7 @@ public class CacheAdvice {
 //
 //        // 将修改后的参数传入
 //        return joinPoint.proceed(objects);
-        System.err.println("请求的advice触发了----->around----->end---obj:"+obj);
+        log.info("请求的advice触发了----->around----->end---obj:"+obj);
         return obj;
     }
 
@@ -109,7 +110,16 @@ public class CacheAdvice {
         log.info("==== doAfter 方法进入了====");
         Signature signature = joinPoint.getSignature();
         String method = signature.getName();
+        log.error("==== doAfter 方法进入了====>>"+ joinPoint.getTarget()+" :"+joinPoint.getSourceLocation());
+        Object obj = joinPoint.getTarget();
+        Method[] methods = obj.getClass().getMethods();
+//        if(methods!=null){
+//            for (Method method1 : methods) {
+//                log.error("method1:"+method1.getName());
+//            }
+//        }
         log.info("方法{}已经执行完", method);
+
     }
 
     @AfterReturning(pointcut = "able()", returning = "result")

@@ -31,7 +31,10 @@ public class TestController {
     CacheTestService cacheTestS;
     @RequestMapping("/cache")
     public String cache() {
-        cacheTestS.test1("t1","t2");
+        CacheTestService.PPTest ppTest = new CacheTestService.PPTest();
+        ppTest.setPt1(100);
+        ppTest.setPt2("dddd");
+        cacheTestS.test1(ppTest,"t2",1,2L,3f,"pp");
         return "Hello Spring Boot!";
     }
     @RequestMapping("/cache1")

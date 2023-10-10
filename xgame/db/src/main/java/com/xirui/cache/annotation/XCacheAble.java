@@ -10,7 +10,9 @@ import java.lang.annotation.*;
 @Documented
 public @interface XCacheAble {
     CacheEnum.Type type() default CacheEnum.Type.LOCAL;
+    String group() default "";
     String name() default "";
-    String key() default "";
+
+    String[] params();
     boolean sync() default false;
 }

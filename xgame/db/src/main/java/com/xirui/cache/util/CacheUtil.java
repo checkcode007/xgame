@@ -8,38 +8,29 @@ import java.lang.reflect.Field;
  */
 public class CacheUtil {
 
-    public static String createKey(String key1,String key2,Object[] args) throws Exception{
-        String redisK;
-        if(!key2.contains("#") ){
-            redisK = key1+":"+key2;
-            return redisK;
+    public static String createKey(String group,String name,String[] param,Object[] args) throws Exception{
+        String ret = group+":"+name;
+        if(param == null || param.length<1){
+            return  ret;
         }
-        String[] kk = key2.split("#");
-        redisK =key1+":"+kk[0];
-        if(kk.length ==2){
-            String param = kk[1];
-            String p0 =param;
-            String p1 =null;
-            if(param.contains(".")){
-                String[] pp = param.split("\\.");
-                if(pp.length ==2){
-                    p0 = pp[0];
-                    p1 = pp[1];
-                }
+        int index=0;
+        for (String s : param) {
+            Object arg1 = args[index++];
+            if(!s.contains(".")){
+                ret+=":"+arg1;
+                continue;
             }
-            Object arg1 = args[0];
-            if(p1!=null){
-                Field field = arg1.getClass().getDeclaredField(p1);
-                if(field!=null){
-                    field.setAccessible(true);
-                    redisK+=field.get(arg1);
-                }
-            }else{
-                redisK+=arg1;
-            }
+            String[] pp = s.split("\\.");
+            if(pp.length !=2) continue;
+            String p1 = pp[1];
+            if(p1==null)continue;
+            Field field = arg1.getClass().getDeclaredField(p1);
+            if(field==null) continue;
+            field.setAccessible(true);
+            ret+=":"+field.get(arg1);
+        }
 
-        }
-        return redisK;
+        return ret;
     }
 
 }

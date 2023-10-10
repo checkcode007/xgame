@@ -34,8 +34,16 @@ public class TestController {
         CacheTestService.PPTest ppTest = new CacheTestService.PPTest();
         ppTest.setPt1(100);
         ppTest.setPt2("dddd");
-        cacheTestS.test1(ppTest,"t2",1,2L,3f,"pp");
+        cacheTestS.add(ppTest,"t2",1,2L,3f,"pp");
         return "Hello Spring Boot!";
+    }
+    @RequestMapping("/cacheDel")
+    public String cacheDel() {
+        CacheTestService.PPTest ppTest = new CacheTestService.PPTest();
+        ppTest.setPt1(100);
+        ppTest.setPt2("dddd");
+        cacheTestS.del(ppTest,"t2",1,2L,3f,"pp");
+        return "Hello Spring Boot---->del";
     }
     @RequestMapping("/cache1")
     public String cache1() {

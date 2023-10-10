@@ -2,6 +2,7 @@ package com.xirui.cache.service;
 
 import com.xirui.cache.CacheManager;
 import com.xirui.cache.annotation.XCacheAble;
+import com.xirui.cache.annotation.XCacheEvict;
 import com.xirui.cache.util.CacheUtil;
 import com.xirui.util.FastJsonUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -44,9 +45,11 @@ public class CacheAdvice2 {
         Method method = methodSignature.getMethod();
         sj.add(signature.getName()).add(signature.getDeclaringTypeName());
         XCacheAble annotation = method.getAnnotation(XCacheAble.class);
-        String k = annotation.key();
+        String group = annotation.group();
         String name = annotation.name();
-        String redisK = CacheUtil.createKey(name,k,args);
+        String[] params = annotation.params();
+        String redisK = CacheUtil.createKey(group,name,params,args);
+
         sj.add("redisK===>"+redisK);
         Object obj = joinPoint.proceed();
         sj.add("obj:"+obj);
@@ -70,15 +73,20 @@ public class CacheAdvice2 {
 
         Method method = methodSignature.getMethod();
         sj.add(signature.getName()).add(signature.getDeclaringTypeName());
-        XCacheAble annotation = method.getAnnotation(XCacheAble.class);
-        String k = annotation.key();
-        String redisK = CacheUtil.createKey(annotation.name(),k,args);
-
+        XCacheEvict annotation = method.getAnnotation(XCacheEvict.class);
+        String group = annotation.group();
+        String name = annotation.name();
+        String[] params = annotation.params();
+        String redisK = CacheUtil.createKey(group,name,params,args);
         sj.add("redisK===>"+redisK);
         Object obj = joinPoint.proceed();
+        sj.add("obj:"+obj);
+        log.info(sj.toString());
         if(obj == null){
             return FastJsonUtil.parseJSONStr2JSONObject("{\"message\":\"illegal id\",\"code\":403}");
         }
+        ICaches caches = CacheManager.ins.get(annotation.type());
+        caches.evict(name,redisK);
         log.info(sj+"======>end");
         return obj;
     }

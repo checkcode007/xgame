@@ -10,6 +10,8 @@ import java.lang.annotation.*;
 @Documented
 public @interface XCacheEvict {
     CacheEnum.Type type() default CacheEnum.Type.LOCAL;
+    String group() default "";
     String name() default "";
-    String key() default "";
+
+    String[] params();
 }

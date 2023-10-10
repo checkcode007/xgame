@@ -1,7 +1,6 @@
 package com.xirui.cache;
 
 
-import com.xirui.cache.service.BaseCache;
 import com.xirui.cache.service.ICaches;
 import com.xirui.cache.service.LocalCaches;
 

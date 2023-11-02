@@ -1,4 +1,4 @@
-package com.xirui.cache.service;
+package com.xirui.cache.bean;
 
 import java.io.Serializable;
 

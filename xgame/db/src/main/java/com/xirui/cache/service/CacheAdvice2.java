@@ -3,6 +3,7 @@ package com.xirui.cache.service;
 import com.xirui.cache.CacheManager;
 import com.xirui.cache.annotation.XCacheAble;
 import com.xirui.cache.annotation.XCacheEvict;
+import com.xirui.cache.bean.ICaches;
 import com.xirui.cache.util.CacheUtil;
 import com.xirui.util.FastJsonUtil;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -1,12 +1,9 @@
-package com.xirui.cache.service;
+package com.xirui.cache.bean.local;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
 import com.xirui.cache.CacheEnum;
-import com.xirui.cache.bean.LocalCache;
+import com.xirui.cache.bean.AbstractCaches;
 
 import java.io.Serializable;
-import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 本地缓存
  * @author zcj
  */
-public class LocalCaches extends AbstractCaches{
+public class LocalCaches extends AbstractCaches {
 
     private Map<String , LocalCache> map = new ConcurrentHashMap<>();
 

@@ -1,7 +1,7 @@
-package com.xirui.cache.service;
+package com.xirui.cache.bean;
 
 import com.xirui.cache.CacheEnum;
-import com.xirui.cache.bean.LocalCache;
+import com.xirui.cache.bean.local.LocalCache;
 
 import java.io.Serializable;
 import java.util.Map;

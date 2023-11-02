@@ -1,8 +1,8 @@
 package com.xirui.cache;
 
 
-import com.xirui.cache.service.ICaches;
-import com.xirui.cache.service.LocalCaches;
+import com.xirui.cache.bean.ICaches;
+import com.xirui.cache.bean.local.LocalCaches;
 
 import java.util.Map;
 

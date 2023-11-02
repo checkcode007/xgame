@@ -7,6 +7,7 @@ import com.xirui.mysql.mapper.AbstractMapperService;
 import com.xirui.mysql.mapper.IMapper;
 import com.xirui.mysql.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 @Service
 public class CacheTestService {
 
+    @Autowired
+    RedisTemplate<String, String> redisTemplate;
 
     @XCacheAble(group = "cacheTest",name = "cache1", params={"p1.pt2","p2"})
     public String add(PPTest p1,String p2,Integer p3,Long p4,Float p5,Object p6) {

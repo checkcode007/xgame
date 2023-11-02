@@ -1,14 +1,12 @@
-package com.xirui.cache.bean;
+package com.xirui.cache.bean.local;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.xirui.cache.CacheEnum;
-import com.xirui.cache.service.AbstractCache;
+import com.xirui.cache.bean.AbstractCache;
 
 import java.io.Serializable;
 import java.time.Duration;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 本地缓存

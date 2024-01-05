@@ -1,6 +1,5 @@
-import com.xirui.Managers;
-import com.xirui.redis.redisson.RedissonMgr;
-import io.swagger.models.auth.In;
+import com.client.Managers;
+import com.client.redis.redisson.RedissonMgr;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.*;
 

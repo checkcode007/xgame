@@ -1,5 +1,5 @@
-import com.client.Managers;
-import com.client.redis.redisson.RedissonMgr;
+import com.proto.Managers;
+import com.proto.redis.redisson.RedissonMgr;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.*;
 

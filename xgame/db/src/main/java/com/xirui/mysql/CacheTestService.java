@@ -1,5 +1,6 @@
 package com.xirui.mysql;
 
+import com.xirui.cache.CacheEnum;
 import com.xirui.cache.annotation.XCacheAble;
 import com.xirui.cache.annotation.XCacheEvict;
 import com.xirui.mysql.entity.Student;
@@ -18,11 +19,11 @@ public class CacheTestService {
     @Autowired
     RedisTemplate<String, String> redisTemplate;
 
-    @XCacheAble(group = "cacheTest",name = "cache1", params={"p1.pt2","p2"})
+    @XCacheAble(type= CacheEnum.Type.REMOTE,group = "cacheTest",name = "cache1", params={"p1.pt2","p2"})
     public String add(PPTest p1,String p2,Integer p3,Long p4,Float p5,Object p6) {
         return "==result=";
     }
-    @XCacheEvict(group = "cacheTest",name = "cache1", params={"p1.pt2","p2"})
+    @XCacheEvict(type= CacheEnum.Type.REMOTE,group = "cacheTest",name = "cache1", params={"p1.pt2","p2"})
     public String del(PPTest p1,String p2,Integer p3,Long p4,Float p5,Object p6) {
         return "==result=";
     }

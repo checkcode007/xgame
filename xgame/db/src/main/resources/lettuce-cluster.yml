@@ -1,0 +1,6 @@
+nodes:
+  - "redis://dev-cachecluster.nku4ud.clustercfg.apse1.cache.amazonaws.com:6380"
+  - "redis://dev-cachecluster.nku4ud.clustercfg.apse1.cache.amazonaws.com:6380"
+password: ""
+ssl: false
+timeout: 3000

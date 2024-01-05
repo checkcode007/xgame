@@ -7,11 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DbApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(DbApplication.class, args);
-
-//        TestMgo testMgo = new TestMgo();
-//        TestBean testBean = new TestBean();
-//        testMgo.save(1l,testBean);
+        Managers.ins.init();
     }
 }

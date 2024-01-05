@@ -1,0 +1,18 @@
+clusterServersConfig:
+  nodeAddresses:
+    - "redis://dev-cachecluster.nku4ud.clustercfg.apse1.cache.amazonaws.com:6380"
+#    - "redis://127.0.0.1:7001"
+#    - "redis://127.0.0.1:7002"
+  scanInterval: 2000
+  readMode: "SLAVE"
+  subscriptionMode: "SLAVE"
+
+
+#singleServerConfig:
+#  address: "redis://dev-cachecluster.nku4ud.clustercfg.apse1.cache.amazonaws.com:6380"
+#  address: "redis://redis-12092.c309.us-east-2-1.ec2.cloud.redislabs.com:12092"
+#  timeout: 1000
+#  pingConnectionInterval: 1000
+#  retryAttempts: 3
+#  retryInterval: 1500
+

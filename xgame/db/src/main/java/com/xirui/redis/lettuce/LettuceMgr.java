@@ -93,7 +93,7 @@ public class LettuceMgr {
     public static void main(String[] args) throws  Exception {
         LettuceMgr mgr = new LettuceMgr();
         mgr.init();
-        LettuceEnum cluster = mgr.getCluster();
+        LettuceEnum cluster = mgr.getSingle();
 
         // 使用 clusterClient 进行操作...
         RedisStringAsyncCommands<String, String> async = (RedisStringAsyncCommands<String, String>) cluster.asyncCommands();

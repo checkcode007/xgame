@@ -1,5 +1,5 @@
-import com.proto.Managers;
-import com.proto.redis.redisson.RedissonMgr;
+import com.gamefull.Managers;
+import com.gamefull.redis.redisson.RedissonMgr;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.*;
 

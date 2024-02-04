@@ -27,7 +27,7 @@
         </rollingPolicy>
     </appender>
     <!--创建一个具体的日志输出-->
-    <logger name="com.proto" level="info" additivity="true">
+    <logger name="com.gamefull" level="info" additivity="true">
         <!--可以有多个appender-ref，即将日志记录到不同的位置-->
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="fileLog"/>
